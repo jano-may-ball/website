@@ -1,0 +1,32 @@
+<nav class="header navbar-expand-lg navbar-light">
+    <div class="container d-flex py-3">
+        <a href="/" class="navbar-brand">
+            <img src="/images/logo.png" alt="Jano" class="header__logo" />
+        </a>
+        <div class="collapse navbar-collapse">
+            {{ $currentPage := . }}
+            <ul class="navbar-nav ml-auto">
+                {{ range .Site.Menus.main }}
+                {{ if .HasChildren }}
+                <li class="nav-item dropdown{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
+                    <a class="nav-link dropdown-toggle header__link" href="#" id="navbarDropdown{{ .Identifier }}"
+                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ .Name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ .Identifier }}">
+                        {{ range .Children }}
+                        <a class="dropdown-item{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}"
+                            href="{{ .URL }}">{{ .Name }}</a>
+                        {{ end }}
+                    </div>
+                </li>
+                {{ else }}
+                <li class="nav-item{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
+                    <a class="nav-link header__link" href="{{ .URL }}">{{ .Name }}</a>
+                </li>
+                {{ end }}
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</nav>

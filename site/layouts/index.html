@@ -1,9 +1,61 @@
 {{ define "main" }}
-
-<h1>Hugo with Webpack, Sass, and PostCSS</h1>
-
-<h3>Hooray 🎉 - you've built this with <a href="https://github.com/netlify/victor-hugo">Victor-Hugo</a>!</h3>
-
-<a href="{{ "/tech" | relURL }}">Check out the tech</a>
-
+<div class="container-fluid hero">
+    <div class="hero__overlay"></div>
+    <video class="hero__video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="/images/hero_background.mp4" type="video/mp4">
+    </video>
+    <div class="hero__content container d-flex flex-column justify-content-between">
+        <div class="hero__text">
+            <h1 class="hero__title">A modern event ticketing system</h1>
+            <h2>Built for May Balls in mind</h2>
+        </div>
+        <small class="hero__attribution">
+            <a href="https://vimeo.com/176058720" class="hero__link" target="_blank" rel="noopener noreferrer">Sidney Sussex
+                May Ball 2016</a> by Teralon, licensed under the
+            <a href="https://creativecommons.org/licenses/by/3.0/" class="hero__link" target="_blank"
+               rel="noopener noreferrer">Creative Commons BY 3.0 license</a>.
+        </small>
+    </div>
+</div>
+<div class="container-fluid features">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4">
+                <i class="fas fa-bolt fa-fw fa-3x features__icon"></i>
+                <h4 class="features__title">Modern & Fast</h4>
+                <p>
+                    Built for the modern May Ball committee, Jano Ticketing System makes use of the latest technologies.
+                    This is why despite its complexity the Jano Ticketing System still runs lightning fast.
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <i class="fas fa-box-open fa-fw fa-3x features__icon"></i>
+                <h4 class="features__title">Modular and Customisable</h4>
+                <p>
+                    Jano Ticketing System is designed with developers in mind. Want to customise the system to fit your
+                    needs? It is simply a new module away.
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <img src="/images/osi_logo.png" class="features__logo" alt="OSI" />
+                <h4 class="features__title">Open Source</h4>
+                <p>
+                    Jano Ticketing System is licensed under the GNU Affero General Public License. It means that you have
+                    the freedom to use it, including for commercial purposes, and to modify it.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid download">
+    <div class="container download__content">
+        <h1 class="download__description">Download latest release</h1>
+        <div class="d-flex justify-content-center">
+            <a href="https://github.com/jano-may-ball/ticketing" class="btn btn-light btn-lg d-flex">
+                <div class="d-inline-block mr-2"><i class="fab fa-github fa-2x mr-2"></i></div>
+                <h5 class="d-inline-block align-self-center mb-0">Download from GitHub</h5>
+            </a>
+        </div>
+    </div>
+</div>
 {{ end }}

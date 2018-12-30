@@ -1,0 +1,16 @@
+{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+<div class="container list my-3">
+    <h1 class="list__title">Blog</h1>
+    <ul class="list-group mt-2 mb-4 w-100">
+        {{ range .Paginator.Pages }}
+        <li class="list-group-item">
+            <h3 class="list__item-title">{{ .Title }}&nbsp;&nbsp;<small class="text-muted">
+            {{ dateFormat "2 January, 2006" .Date }}</small></h3>
+            <p>{{ .Summary }}</p>
+            <a href="{{ .RelPermalink }}">Read More…</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}
