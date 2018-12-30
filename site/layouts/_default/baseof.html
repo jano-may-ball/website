@@ -4,12 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <base href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ $.Site.BaseURL }}{{ end }}">
   <title>{{ $.Site.Title }}</title>
   <link href="https://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet">
   {{ $stylesheet := .Site.Data.webpack.main }}
   {{ with $stylesheet.css }}
-  <link href="{{ relURL . }}" rel="stylesheet">
+  <link href="{{ absURL . }}" rel="stylesheet">
   {{ end }}
 </head>
 
@@ -19,7 +18,7 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ $script := .Site.Data.webpack.main }}
   {{ with $script.js }}
-  <script src="{{ relURL . }}"></script>
+  <script src="{{ absURL . }}"></script>
   {{ end }}
 </body>
 

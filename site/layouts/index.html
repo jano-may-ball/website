@@ -2,7 +2,7 @@
 <div class="container-fluid hero">
     <div class="hero__overlay"></div>
     <video class="hero__video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="/images/hero_background.mp4" type="video/mp4">
+        <source src="{{ "/images/hero_background.mp4" | absURL }}" type="video/mp4">
     </video>
     <div class="hero__content container d-flex flex-column justify-content-between">
         <div class="hero__text">
@@ -37,7 +37,7 @@
                 </p>
             </div>
             <div class="col-sm-12 col-md-4">
-                <img src="/images/osi_logo.png" class="features__logo" alt="OSI" />
+                <img src="{{ "/images/osi_logo.png" | absURL }}" class="features__logo" alt="OSI" />
                 <h4 class="features__title">Open Source</h4>
                 <p>
                     Jano Ticketing System is licensed under the GNU Affero General Public License. It means that you have
