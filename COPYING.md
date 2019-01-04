@@ -1,4 +1,4 @@
-### License of `janoticketing.co.uk`
+### License of the Jano Ticketing website
 
 This License incorporates the terms and conditions of version 3 of the GNU 
 Affero General Public License, supplemented by the additional permissions

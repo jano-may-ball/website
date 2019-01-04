@@ -1,4 +1,4 @@
-# Jano Foundation Website
+# Jano Ticketing Website
 
 Copyright &copy; 2018-2019 Andrew Ying and other contributors.
 
