@@ -3,7 +3,7 @@ LABEL org.label-schema.name="Image for building the Jano Ticketing website" \
     maintainer="Andrew Ying <hi@andrewying.com>" \
     org.label-schema.schema-version="1.0"
 
-ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_${HUGO_VERSION}_Linux-64bit
+ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_0.53_Linux-64bit
 ENV NODEJS_VERSION=v10.15.0 NPM_VERSION=6 YARN_VERSION=latest
 ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
 
@@ -54,7 +54,7 @@ RUN apk add --no-cache bash curl make gcc g++ python py-pygments linux-headers b
     fi \
     \
     && apk del curl make gcc g++ python linux-headers binutils-gold gnupg ${DEL_PKGS} \
-    && rm -rf ${RM_DIRS} /node-${VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
+    && rm -rf ${RM_DIRS} /node-${NODE_VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
         /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
         /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
 
