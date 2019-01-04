@@ -3,3 +3,4 @@ dist/
 site/data/webpack.json
 .idea/
 yarn-error.log
+*.iml
