@@ -1,7 +1,7 @@
 {
-  "name": "jano",
+  "name": "@jano-may-ball/janoticketing.co.uk",
   "version": "1.0.0",
-  "description": "Victor Hugo is a Hugo boilerplate for creating truly epic websites!",
+  "description": "Source for the janoticketing.co.uk website",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src",
@@ -19,7 +19,7 @@
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.prod.js --hot --inline"
   },
   "author": "Andrew Ying",
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
