@@ -62,7 +62,7 @@ RUN for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-key
 RUN mkdir /usr/local/hugo
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /usr/local/hugo/
 RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
-	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
+	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo
 RUN apk del curl ca-certificates gnupg \
     && rm -rf /usr/share/man /tmp/* /var/cache/apk/* /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
