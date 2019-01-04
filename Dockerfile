@@ -3,15 +3,18 @@ LABEL org.label-schema.name="Image for building the Jano Ticketing website" \
     maintainer="Andrew Ying <hi@andrewying.com>" \
     org.label-schema.schema-version="1.0"
 
+ENV GLIBC_VERSION 2.28-r0
 ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_0.53_Linux-64bit
 ENV NODEJS_VERSION=v10.15.0 DISTRO=linux-x64 NPM_VERSION=6 YARN_VERSION=latest
 
-RUN apk add --no-cache bash ca-certificates curl py-pygments binutils-gold gnupg
+RUN apk add --no-cache bash ca-certificates curl py-pygments gnupg
 
 RUN curl -sfSL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub \
-    && curl -sfSLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk \
-    && apk add glibc-2.28-r0.apk \
-    && rm -f glibc-2.28-r0.apk
+    && curl -sfSLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
+    && curl -sfSLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk \
+    && curl -sfSLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-i18n-${GLIBC_VERSION}.apk \
+    && apk add --no-cache glibc-${GLIBC_VERSION}.apk glibc-bin-${GLIBC_VERSION}.apk glibc-i18n-${GLIBC_VERSION}.apk \
+    && rm -f glibc-*.apk
 
 RUN for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
         gpg --keyserver $server --recv-keys \
