@@ -1,6 +1,6 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: jano-may-ball/janoticketing.co.uk
 media_folder: "site/static/images/uploads"
 collections:
 - name: "blog"
