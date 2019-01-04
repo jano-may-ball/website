@@ -1,0 +1,5 @@
+- service: build
+  type: serial
+  steps:
+    - name: Build
+      command: npm run build
