@@ -4,10 +4,9 @@ LABEL org.label-schema.name="Image for building the Jano Ticketing website" \
     org.label-schema.schema-version="1.0"
 
 ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_0.53_Linux-64bit
-ENV NODEJS_VERSION=v10.15.0 NPM_VERSION=6 YARN_VERSION=latest
-ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
+ENV NODEJS_VERSION=v10.15.0 DISTRO=linux-x64 NPM_VERSION=6 YARN_VERSION=latest
 
-RUN apk add --no-cache bash curl make gcc g++ python py-pygments linux-headers binutils-gold gnupg libstdc++ \
+RUN apk add --no-cache bash curl py-pygments binutils-gold gnupg \
     \
     && for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
         gpg --keyserver $server --recv-keys \
@@ -21,40 +20,39 @@ RUN apk add --no-cache bash curl make gcc g++ python py-pygments linux-headers b
             DD8F2338BAE7501E3DD5AC78C273792F7D83545D && break; \
     done \
     \
-    && curl -sfSLO https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}.tar.xz \
+    && curl -sfSLO https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-${DISTRO}.tar.xz \
     && curl -sfSL https://nodejs.org/dist/${NODEJS_VERSION}/SHASUMS256.txt.asc | gpg --batch --decrypt | \
-        grep " node-${NODEJS_VERSION}.tar.xz\$" | sha256sum -c | grep ': OK$' \
+        grep " node-${NODEJS_VERSION}-${DISTRO}.tar.xz\$" | sha256sum -c | grep ': OK$' \
     \
-    && tar -xf node-${NODEJS_VERSION}.tar.xz \
-    && cd node-${NODEJS_VERSION} \
-    && ./configure --prefix=/usr ${CONFIG_FLAGS} \
-    && make -j$(getconf _NPROCESSORS_ONLN) \
-    && make install \
+    && mkdir -p /usr/local/lib/nodejs \
+    && tar -xf node-${NODEJS_VERSION}-${DISTRO}.tar.xz -C /usr/local/lib/nodejs \
+    && mv -f /usr/local/lib/nodejs/node-${NODEJS_VERSION}-${DISTRO} /usr/local/lib/nodejs/node-${NODEJS_VERSION} \
+    && ln -s /usr/local/lib/nodejs/node-${NODEJS_VERSION}/bin/node /usr/local/bin/node \
+    && ln -s /usr/local/lib/nodejs/node-${NODEJS_VERSION}/bin/npm /usr/local/bin/npm \
+    && ln -s /usr/local/lib/nodejs/node-${NODEJS_VERSION}/bin/npx /usr/local/bin/npx \
+    \
     && cd / \
+    && if [ -n "$NPM_VERSION" ]; then \
+        npm install -g npm@${NPM_VERSION}; \
+    fi; \
+    find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf \
     \
-    && if [ -z "$CONFIG_FLAGS" ]; then \
-        if [ -n "$NPM_VERSION" ]; then \
-            npm install -g npm@${NPM_VERSION}; \
-        fi; \
-        find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf; \
-        if [ -n "$YARN_VERSION" ]; then \
-            for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
-                gpg --keyserver $server --recv-keys \
-                    6A010C5166006599AA17F08146C2130DFD2497F5 && break; \
-            done \
-            && curl -sfSL -O https://yarnpkg.com/${YARN_VERSION}.tar.gz -O \
-                https://yarnpkg.com/${YARN_VERSION}.tar.gz.asc \
-            && gpg --batch --verify ${YARN_VERSION}.tar.gz.asc ${YARN_VERSION}.tar.gz \
-            && mkdir /usr/local/share/yarn \
-            && tar -xf ${YARN_VERSION}.tar.gz -C /usr/local/share/yarn --strip 1 \
-            && ln -s /usr/local/share/yarn/bin/yarn /usr/local/bin/ \
-            && ln -s /usr/local/share/yarn/bin/yarnpkg /usr/local/bin/ \
-            && rm ${YARN_VERSION}.tar.gz*; \
-        fi; \
+    && if [ -n "$YARN_VERSION" ]; then \
+        for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
+            gpg --keyserver $server --recv-keys \
+                6A010C5166006599AA17F08146C2130DFD2497F5 && break; \
+        done \
+        && curl -sfSL -O https://yarnpkg.com/${YARN_VERSION}.tar.gz -O https://yarnpkg.com/${YARN_VERSION}.tar.gz.asc \
+        && gpg --batch --verify ${YARN_VERSION}.tar.gz.asc ${YARN_VERSION}.tar.gz \
+        && mkdir /usr/local/share/yarn \
+        && tar -xf ${YARN_VERSION}.tar.gz -C /usr/local/share/yarn --strip 1 \
+        && ln -s /usr/local/share/yarn/bin/yarn /usr/local/bin/yarn \
+        && ln -s /usr/local/share/yarn/bin/yarnpkg /usr/local/bin/yarnpkg \
+        && rm ${YARN_VERSION}.tar.gz*; \
     fi \
     \
-    && apk del curl make gcc g++ python linux-headers binutils-gold gnupg ${DEL_PKGS} \
-    && rm -rf ${RM_DIRS} /node-${NODE_VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
+    && apk del curl gnupg \
+    && rm -rf node-${NODEJS_VERSION}-${DISTRO}.tar.xz  /usr/share/man /tmp/* /var/cache/apk/* \
         /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
         /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
 
