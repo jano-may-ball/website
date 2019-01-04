@@ -6,9 +6,14 @@ LABEL org.label-schema.name="Image for building the Jano Ticketing website" \
 ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_0.53_Linux-64bit
 ENV NODEJS_VERSION=v10.15.0 DISTRO=linux-x64 NPM_VERSION=6 YARN_VERSION=latest
 
-RUN apk add --no-cache bash curl py-pygments binutils-gold gnupg \
-    \
-    && for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
+RUN apk add --no-cache bash ca-certificates curl py-pygments binutils-gold gnupg
+
+RUN curl -sfSL https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -o /etc/apk/keys/sgerrand.rsa.pub \
+    && curl -sfSLO https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk \
+    && apk add glibc-2.28-r0.apk \
+    && rm -f glibc-2.28-r0.apk
+
+RUN for server in ipv4.pool.sks-keyservers.net keyserver.pgp.com ha.pool.sks-keyservers.net; do \
         gpg --keyserver $server --recv-keys \
             94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
             B9AE9905FFD7803F25714661B63B535A4C206CA9 \
@@ -51,17 +56,15 @@ RUN apk add --no-cache bash curl py-pygments binutils-gold gnupg \
         && rm ${YARN_VERSION}.tar.gz*; \
     fi \
     \
-    && apk del curl gnupg \
-    && rm -rf node-${NODEJS_VERSION}-${DISTRO}.tar.xz  /usr/share/man /tmp/* /var/cache/apk/* \
-        /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
-        /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
+    && rm -rf node-${NODEJS_VERSION}-${DISTRO}.tar.xz  /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
+        /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts \
 
-# Download and Install hugo
 RUN mkdir /usr/local/hugo
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /usr/local/hugo/
 RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo \
-	&& rm /usr/local/hugo/${HUGO_BINARY}.tar.gz
+RUN apk del curl ca-certificates gnupg \
+    && rm -rf /usr/share/man /tmp/* /var/cache/apk/* /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
 RUN mkdir -p /src/jano
 WORKDIR /src/jano
