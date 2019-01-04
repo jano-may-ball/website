@@ -17,6 +17,7 @@ RUN mkdir -p /src/jano
 WORKDIR /src/jano
 
 COPY . /src/jano
+RUN yarn install
 
 EXPOSE 1313
 CMD hugo version
