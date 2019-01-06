@@ -13,15 +13,14 @@ RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
 RUN apk del curl \
     && rm -rf /usr/share/man /tmp/* /var/cache/apk/* /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
-RUN mkdir -p /src/jano
+RUN mkdir -p /src/jano/bin
 WORKDIR /src/jano
 
-COPY . /src/jano
-RUN mkdir -p /src/jano/bin
-COPY .codeship/ /src/jano/bin/
-RUN cd /src/jano \
-    && mv bin/lftprc .lftprc \
-    && chmod +x bin/*.sh
+COPY . .
+COPY codeship ./.lftprc
+COPY codeship ./bin/
+
+RUN chmod +x bin/*.sh
 RUN yarn install
 
 EXPOSE 1313
