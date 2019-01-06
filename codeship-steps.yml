@@ -2,6 +2,6 @@
   type: serial
   steps:
     - name: Build
-      command: yarn run build
+      command: /src/bin/build.sh
     - name: Deploy
-      command: codeship/deploy.sh
+      command: /src/bin/deploy.sh

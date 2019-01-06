@@ -4,6 +4,7 @@ LABEL org.label-schema.name="Image for building the Jano Ticketing website" \
     org.label-schema.schema-version="1.0"
 
 ENV HUGO_VERSION=0.53 HUGO_BINARY=hugo_0.53_Linux-64bit
+WORKDIR /src/jano
 
 RUN apk add --no-cache bash curl git git-lfs py-pygments lftp
 RUN mkdir /usr/local/hugo
@@ -13,11 +14,10 @@ RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
 RUN apk del curl \
     && rm -rf /usr/share/man /tmp/* /var/cache/apk/* /usr/local/hugo/${HUGO_BINARY}.tar.gz
 
-RUN mkdir -p /src/jano/bin
-WORKDIR /src/jano
-
-COPY . .
-RUN yarn install
+RUN mkdir -p /src/jano \
+    && mkdir -p /src/bin
+COPY codeship/ /src/bin/
+RUN chmod +x /src/bin/*.sh
 
 EXPOSE 1313
 CMD hugo version
