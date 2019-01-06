@@ -3,4 +3,4 @@ build:
     image: janorocks/website-build
     dockerfile: Dockerfile
   cached: true
-  encrypted_env_file: .codeship/env
+  encrypted_env_file: codeship/env
