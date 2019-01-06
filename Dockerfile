@@ -13,6 +13,8 @@ RUN tar xzf /usr/local/hugo/${HUGO_BINARY}.tar.gz -C /usr/local/hugo/ \
 	&& ln -s /usr/local/hugo/hugo /usr/local/bin/hugo
 RUN apk del curl \
     && rm -rf /usr/share/man /tmp/* /var/cache/apk/* /usr/local/hugo/${HUGO_BINARY}.tar.gz
+RUN mkdir -p ~/.ssh \
+    && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 RUN mkdir -p /src/jano \
     && mkdir -p /src/bin
