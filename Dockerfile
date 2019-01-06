@@ -17,6 +17,11 @@ RUN mkdir -p /src/jano
 WORKDIR /src/jano
 
 COPY . /src/jano
+RUN mkdir -p /src/jano/bin
+COPY .codeship/ /src/jano/bin/
+RUN cd /src/jano \
+    && mv bin/lftprc .lftprc \
+    && chmod +x bin/*.sh
 RUN yarn install
 
 EXPOSE 1313
