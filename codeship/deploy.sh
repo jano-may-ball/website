@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo -e $PRIVATE_SSH_KEY >> /root/.ssh/id_rsa
+chmod 0600 /root/.ssh/id_rsa
 mv /src/jano/codeship/lftprc /src/jano/.lftprc
 
 cd /src/jano
