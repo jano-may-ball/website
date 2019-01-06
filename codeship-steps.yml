@@ -4,4 +4,4 @@
     - name: Build
       command: yarn run build
     - name: Deploy
-      command: bin/deploy.sh
+      command: codeship/deploy.sh
