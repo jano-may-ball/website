@@ -9,7 +9,7 @@ menu:
 
 # Sponsors
 
-Jano Ticketing System is not possible without  the generosity of the sponsors below.
+Jano Ticketing System is not possible without the generosity of the sponsors below.
 
 <table class="table">
 <tr>
@@ -41,5 +41,8 @@ alt="BrowserStack" /></a><br />Browser compatibility testing
 * Translation management by [Lokalise](https://lokalise.co)
 * License management by [FOSSA](https://fossa.com)
 
-<small>All product names, logos, and brands are property of their respective owners and are used with
-permission. Such use do not imply endorsement by them, or of them.</small>
+All product names, logos, and brands used are not us - but we did ask before using them.
+The fact that we included their names and logos does not mean that they endorsed us.
+Although we think our sponsors are pretty cool, we can't make any guarantees about the
+quality of their offerings, or that these offerings would necessarily be fit for your
+use.
