@@ -1,7 +1,7 @@
 - service: build
-  type: serial
-  steps:
-    - name: Build
-      command: /src/bin/build.sh
-    - name: Deploy
-      command: /src/bin/deploy.sh
+  name: build
+  command: /src/bin/build.sh
+- service: build
+  name: deploy
+  command: /src/bin/deploy.sh
+  tag: master
