@@ -38,6 +38,7 @@ alt="BrowserStack" /></a><br />Browser compatibility testing
 </tr>
 </table>
 
+* Application monitoring by [Bugsnag](https://www.bugsnag.com/)
 * Translation management by [Lokalise](https://lokalise.co)
 * License management by [FOSSA](https://fossa.com)
 
