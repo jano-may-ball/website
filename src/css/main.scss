@@ -1,3 +1,24 @@
+/*!
+ * Jano Ticketing website
+ * Copyright (C) 2018-2019 Andrew Ying and other contributors.
+ *
+ * This file is part of Jano Ticketing website.
+ *
+ * Jano Ticketing website is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License
+ * v3.0 supplemented by additional permissions and terms as published at
+ * COPYING.md.
+ *
+ * Jano Ticketing website is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
 @import './variables';
 @import '~bootstrap/scss/bootstrap';
 @import './prism.css';
@@ -175,13 +196,21 @@
     color: $gray-600;
   }
 
+  &__macstadium {
+    width: 110px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+
   &__keycdn {
     width: 110px;
-    margin: 0 .5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 
   &__digitalocean {
     width: 150px;
-    margin: 0 .5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
   }
 }
