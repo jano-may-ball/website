@@ -1,7 +1,28 @@
+<!--
+  ~ Jano Ticketing website
+  ~ Copyright (C) 2018-2019 Andrew Ying and other contributors.
+  ~
+  ~ This file is part of Jano Ticketing website.
+  ~
+  ~ Jano Ticketing website is free software: you can redistribute it and/or
+  ~ modify it under the terms of the GNU Affero General Public License
+  ~ v3.0 supplemented by additional permissions and terms as published at
+  ~ COPYING.md.
+  ~
+  ~ Jano Ticketing website is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public
+  ~ License along with this program. If not, see
+  ~ <http://www.gnu.org/licenses/>.
+  -->
+
 <nav class="header navbar-expand-lg navbar-light">
     <div class="container d-flex py-3">
         <a href="/" class="navbar-brand">
-            <img src="{{ "/images/logo.png" | absURL }}" alt="Jano" class="header__logo" />
+            <img src="https://assets.janoticketing.co.uk{{ "/images/logo.png" | absURL }}" alt="Jano" class="header__logo" />
         </a>
         <div class="collapse navbar-collapse">
             {{ $currentPage := . }}

@@ -30,7 +30,7 @@
   <link href="https://overpass-30e2.kxcdn.com/overpass-mono.css" rel="stylesheet">
   {{ $stylesheet := .Site.Data.webpack.main }}
   {{ with $stylesheet.css }}
-  <link href="{{ absURL . }}" rel="stylesheet">
+  <link href="https://assets.janoticketing.co.uk{{ absURL . }}" rel="stylesheet">
   {{ end }}
   <!-- Matomo -->
   <script type="text/javascript">
@@ -55,7 +55,7 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ $script := .Site.Data.webpack.main }}
   {{ with $script.js }}
-  <script src="{{ absURL . }}"></script>
+  <script src="https://assets.janoticketing.co.uk{{ absURL . }}"></script>
   {{ end }}
 </body>
 
