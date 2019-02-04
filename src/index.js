@@ -23,9 +23,10 @@ import "./css/main.scss";
 import $ from "jquery";
 import Popper from "popper.js";
 import "bootstrap";
+import Prism from 'prismjs';
 import "@fortawesome/fontawesome-free/js/all";
 
-import "./prism";
+Prism.highlightAll();
 
 $.expr[':'].external = function(obj){
     return !obj.href.match(/^mailto\:/)
@@ -38,4 +39,4 @@ $(document).ready(function() {
     $("a:external").attr("target", "_blank");
 });
 
-export default { $, Popper };
+export default { $, Popper, Prism };

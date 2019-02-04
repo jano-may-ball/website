@@ -1,0 +1,59 @@
+{{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
+<!--
+  ~ Jano Ticketing website
+  ~ Copyright (C) 2018-2019 Andrew Ying and other contributors.
+  ~
+  ~ This file is part of Jano Ticketing website.
+  ~
+  ~ Jano Ticketing website is free software: you can redistribute it and/or
+  ~ modify it under the terms of the GNU Affero General Public License
+  ~ v3.0 supplemented by additional permissions and terms as published at
+  ~ COPYING.md.
+  ~
+  ~ Jano Ticketing website is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public
+  ~ License along with this program. If not, see
+  ~ <http://www.gnu.org/licenses/>.
+  -->
+
+<div class="container page my-4">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            {{ $currentPage := . }}
+            <ul class="nav flex-column">
+                {{ range .Site.Menus.docs }}
+                {{ if .HasChildren }}
+                <li class="nav-item{{ if $currentPage.HasMenuCurrent "docs" . }} active{{ end }}">
+                    <a class="nav-link page__nav__primary" href="#" id="collapseToggle{{ .Identifier }}" role="button"
+                       data-toggle="collapse" data-targe="#collapse{{ .Identifier }}"
+                       aria-controls="collapse{{ .Identifier }}">
+                        {{ .Name }}
+                    </a>
+                </li>
+                <div class="collapse{{ if $currentPage.HasMenuCurrent "docs" . }} show{{ end }}"
+                id="collapse{{ .Identifier }}" aria-labelledby="collapseToggle{ .Identifier }}">
+                {{ range .Children }}
+                    <li class="nav-item{{ if $currentPage.IsMenuCurrent "docs" . }} active{{ end }}">
+                        <a class="nav-link page__nav__secondary" href="{{ relURL .URL }}">{{ .Name }}</a>
+                    </li>
+                {{ end }}
+                </div>
+                {{ else }}
+                <li class="nav-item{{ if $currentPage.IsMenuCurrent "docs" . }} active{{ end }}">
+                    <a class="nav-link page__nav__primary" href="{{ relURL .URL }}">{{ .Name }}</a>
+                </li>
+                {{ end }}
+                {{ end }}
+            </ul>
+        </div>
+        <div class="col-12 col-md-9">
+            <h1>{{ .Title }}</h1>
+            {{- .Content -}}
+        </div>
+    </div>
+</div>
+{{ end }}

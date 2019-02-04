@@ -3,6 +3,12 @@
     "@babel/preset-env"
   ],
   "plugins": [
+    [
+      "prismjs",
+      {
+        "languages": ["javascript", "css", "bash", "markup"]
+      }
+    ],
     "@babel/plugin-syntax-object-rest-spread",
     "@babel/plugin-proposal-object-rest-spread"
   ]

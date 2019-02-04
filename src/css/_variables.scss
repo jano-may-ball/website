@@ -1,3 +1,24 @@
+/*!
+ * Jano Ticketing website
+ * Copyright (C) 2018-2019 Andrew Ying and other contributors.
+ *
+ * This file is part of Jano Ticketing website.
+ *
+ * Jano Ticketing website is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License
+ * v3.0 supplemented by additional permissions and terms as published at
+ * COPYING.md.
+ *
+ * Jano Ticketing website is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
 @import '~bootstrap/scss/functions';
 
 $white: #FDFDFD;
@@ -18,7 +39,17 @@ $red: #FF90B3;
 $purple: #B892FF;
 $pink: #FFC2E2;
 
-$font-family-sans-serif: 'overpass';
+$font-family-sans-serif: "overpass", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+"Segoe UI Symbol", "Noto Color Emoji";
+
+$font-size-base: 1rem !default;
+$h1-font-size: $font-size-base * 2 !default;
+$h2-font-size: $font-size-base * 1.75 !default;
+$h3-font-size: $font-size-base * 1.5 !default;
+$h4-font-size: $font-size-base * 1.25 !default;
+$h5-font-size: $font-size-base !default;
+$h6-font-size: $font-size-base !default;
 
 $navbar-light-color: rgba($primary, .9);
 $navbar-light-hover-color: $white;
@@ -27,31 +58,3 @@ $navbar-light-disabled-color: rgba($primary, .8);
 
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-
-// Override navbar styling
-.navbar-light {
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-light-color;
-      font-weight: 500;
-      border-radius: $border-radius;
-
-      @include hover-focus {
-        background-color: rgba($primary, .9);
-        color: $navbar-light-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-light-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-      color: $navbar-light-active-color;
-      background-color: $primary;
-    }
-  }
-}

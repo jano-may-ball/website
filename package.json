@@ -65,5 +65,9 @@
   },
   "resolutions": {
     "natives": "1.1.6"
+  },
+  "dependencies": {
+    "babel-plugin-prismjs": "^1.0.2",
+    "prismjs": "^1.15.0"
   }
 }

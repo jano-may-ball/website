@@ -7,25 +7,29 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [menu]
   [[menu.main]]
-    identifier = "community"
+    identifier = "Community"
     name = "Community"
     url = "#"
     weight = 900
   [[menu.main]]
-    identifier = "repo"
-    parent = "community"
+    identifier = "Repo"
+    parent = "Community"
     name = "Module Repository"
     url = "https://repo.janoticketing.co.uk"
     weight = 10
   [[menu.main]]
-    identifier = "forum"
-    parent = "community"
+    identifier = "Forum"
+    parent = "Community"
     name = "Forum"
-    url = "https://forum.janoticketing.co.uk"
+    url = "https://forum.jano.rocks"
     weight = 11
   [[menu.main]]
-    identifier = "blog"
-    parent = "community"
+    identifier = "Blog"
+    parent = "Community"
     name = "Blog"
     url = "/blog/"
     weight = 15
+  [[menu.docs]]
+    identifier = "GettingStarted"
+    name = "Getting Started"
+    url = "/docs/getting-started/installation/"
