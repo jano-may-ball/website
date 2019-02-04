@@ -2,6 +2,9 @@
 title: "Installation"
 date: 2010-024T19:02:50-07:00
 draft: false
+aliases:
+  - /docs/
+  - /docs/getting-started/
 menu:
   docs:
     parent: 'GettingStarted'

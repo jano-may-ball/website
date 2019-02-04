@@ -7,6 +7,11 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
 
 [menu]
   [[menu.main]]
+    identifier = "Docs"
+    name = "Docs"
+    url = "/docs/"
+    weight = -998
+  [[menu.main]]
     identifier = "Community"
     name = "Community"
     url = "#"
@@ -32,4 +37,4 @@ disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
   [[menu.docs]]
     identifier = "GettingStarted"
     name = "Getting Started"
-    url = "/docs/getting-started/installation/"
+    url = "/docs/getting-started/"
