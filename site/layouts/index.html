@@ -1,8 +1,29 @@
 {{ define "main" }}
+<!--
+  ~ Jano Ticketing website
+  ~ Copyright (C) 2018-2019 Andrew Ying and other contributors.
+  ~
+  ~ This file is part of Jano Ticketing website.
+  ~
+  ~ Jano Ticketing website is free software: you can redistribute it and/or
+  ~ modify it under the terms of the GNU Affero General Public License
+  ~ v3.0 supplemented by additional permissions and terms as published at
+  ~ COPYING.md.
+  ~
+  ~ Jano Ticketing website is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public
+  ~ License along with this program. If not, see
+  ~ <http://www.gnu.org/licenses/>.
+  -->
+
 <div class="container-fluid hero">
     <div class="hero__overlay"></div>
     <video class="hero__video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="{{ "/images/hero_background.mp4" | absURL }}" type="video/mp4">
+        <source src="https://assets.janoticketing.co.uk{{ "/images/hero_background.mp4" | absURL }}" type="video/mp4">
     </video>
     <div class="hero__content container d-flex flex-column justify-content-between">
         <div class="hero__text">
@@ -37,7 +58,7 @@
                 </p>
             </div>
             <div class="col-sm-12 col-md-4">
-                <img src="{{ "/images/osi_logo.png" | absURL }}" class="features__logo" alt="OSI" />
+                <img src="https://assets.janoticketing.co.uk{{ "/images/osi_logo.png" | absURL }}" class="features__logo" alt="OSI" />
                 <h4 class="features__title">Open Source</h4>
                 <p>
                     Jano Ticketing System is licensed under the GNU Affero General Public License. It means that you have
@@ -51,7 +72,7 @@
     <div class="container download__content">
         <h1 class="download__description">Download latest release</h1>
         <div class="d-flex justify-content-center">
-            <a href="https://github.com/jano-may-ball/ticketing" class="btn btn-light btn-lg d-flex">
+            <a href="https://github.com/JanoCodes/Ticketing" class="btn btn-light btn-lg d-flex">
                 <div class="d-inline-block mr-2"><i class="fab fa-github fa-2x mr-2"></i></div>
                 <h5 class="d-inline-block align-self-center mb-0">Download from GitHub</h5>
             </a>
