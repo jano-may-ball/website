@@ -24,8 +24,8 @@ installed on your machine:
 ## Steps
 
 * Clone repository and install dependencies
-<pre><code class="language-bash">git clone https://github.com/jano-may-ball/ticketing.git
-cd ticketing
+<pre><code class="language-bash">git clone https://github.com/JanoCodes/Ticketing.git
+cd Ticketing
 composer install --no-dev
 npm install</code></pre>
 * Stylesheet can be customised by editing <code class="language-bash">resources/assets/sass/_variables.scss</code>
@@ -38,7 +38,7 @@ npm install</code></pre>
 openssl rsa -in storage/oauth-private.key -outform PEM -pubout -out storage/oauth-public.key</code></pre>
 * Create tables required by the application
 <pre><code class="language-bash">php jano migrate</code></pre>
-* Point web server to <code>public</code> directory and **you're done**!
+* Point web server to <code class="language-bash">public</code> directory and **you're done**!
 
 If you do not want to have to worry about the dependencies, you can also use the Docker
-image [janomayball/ticketing](https://hub.docker.com/r/janomayball/ticketing).
+image [janorocks/ticketing](https://hub.docker.com/r/janorocks/ticketing).

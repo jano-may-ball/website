@@ -23,7 +23,8 @@ import "./css/main.scss";
 import $ from "jquery";
 import Popper from "popper.js";
 import "bootstrap";
-import Prism from 'prismjs';
+import ClipboardJS from "clipboard";
+import Prism from "prismjs";
 import "@fortawesome/fontawesome-free/js/all";
 
 Prism.highlightAll();
@@ -39,4 +40,4 @@ $(document).ready(function() {
     $("a:external").attr("target", "_blank");
 });
 
-export default { $, Popper, Prism };
+export default { $, Popper, ClipboardJS, Prism };

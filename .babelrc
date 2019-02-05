@@ -6,7 +6,8 @@
     [
       "prismjs",
       {
-        "languages": ["javascript", "css", "bash", "markup"]
+        "languages": ["javascript", "css", "bash", "markup"],
+        "plugins": ["toolbar", "copy-to-clipboard"]
       }
     ],
     "@babel/plugin-syntax-object-rest-spread",
